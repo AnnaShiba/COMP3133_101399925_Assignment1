@@ -37,11 +37,20 @@ const EmployeeResolvers = {
                 return ex;
             }
         },
-        async updateEmployee(_, { employee }) {
-            return null;
+        async updateEmployee(_, { id, employee }) {
+            try {
+                const updatedEmployee = await Employee.findByIdAndUpdate(id, employee, { new: true });
+                return updatedEmployee;
+            } catch (err) {
+                return err;
+            }
         },
         async deleteEmployee(_, { id }) {
-            return null;
+            const result = await Employee.findByIdAndDelete(id);
+            if (!result) {
+                return false;
+            }
+            return true;
         },
     },
 };

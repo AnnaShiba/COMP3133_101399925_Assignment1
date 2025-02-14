@@ -22,13 +22,8 @@ userSchema.pre('save', function(next) {
     });
 });
 
-userSchema.methods.comparePassword = function(passwordInput, callback) {
-    bcrypt.compare(passwordInput, this.password, (err, isMatch) => {
-        if (err)
-            return callback(err);
-        
-        callback(null, isMatch);
-    });
+userSchema.methods.comparePassword = async function(passwordInput, callback) {
+    return bcrypt.compareSync(passwordInput, this.password);
 };
 
 module.exports = mongoose.model('User', userSchema);

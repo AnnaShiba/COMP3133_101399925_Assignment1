@@ -7,15 +7,15 @@ const UserResolvers = {
                 const user = await User.findOne({ username });
         
                 if (!user) {
-                    return res.status(404).json({ message: "User not found." });
+                    return null;
                 }
         
-                user.comparePassword(password, (err, isMatch) => {
-                    if (err)
-                        throw err;
-                    
-                    return user;
-                });
+                const result = await user.comparePassword(password);
+                if (!result) {
+                    return null;
+                } 
+
+                return user;
             } catch (err) {
                 return err;
             }
