@@ -1,0 +1,23 @@
+{
+  "name": "COMP3133_101399925_Assignment1  ",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -r dotenv/config ./api/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Anna Shibanova",
+  "license": "ISC",
+  "description": "COMP3133_101399925_Assignment1",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.0",
+    "mongoose": "^8.7.0",
+    "socket.io": "^4.8.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.4"
+  }
+}
